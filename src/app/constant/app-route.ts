@@ -1,5 +1,6 @@
 export enum AppRoute {
   SSO = 'sso',
-  HOME = 'welcome',
-  LEADER_BOARD = 'board'
+  HOME = 'arcade/welcome',
+  LEADER_BOARD = 'arcade/robot-game/leader-board',
+  ROBOT_GAME = 'arcade/robot-game'
 }

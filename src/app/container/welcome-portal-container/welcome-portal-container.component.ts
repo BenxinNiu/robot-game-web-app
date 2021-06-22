@@ -11,7 +11,6 @@ import {AppRoute} from '../../constant/app-route';
   styleUrls: ['./welcome-portal-container.component.scss']
 })
 export class WelcomePortalContainerComponent implements OnInit {
-  isLinear = false;
   gameCatalogFormGroup: FormGroup;
   gameSettingFormGroup: FormGroup;
 
@@ -30,8 +29,15 @@ export class WelcomePortalContainerComponent implements OnInit {
     }, {updateOn: 'change'});
   }
 
-  test(): void {
-    console.log(this.gameCatalogFormGroup.value);
+  launchGame(): void {
+    switch (this.gameCatalogFormGroup.get('game').value) {
+      // todo support more games
+      case 'ROBOT':
+        this.router.navigate([AppRoute.ROBOT_GAME]);
+        return;
+      default:
+        return;
+    }
   }
 
   goToLeaderBoard(): void {
