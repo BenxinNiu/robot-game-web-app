@@ -1,0 +1,12 @@
+@import "src/app/style/global";
+
+.setting {
+  @include center-flex;
+  flex-direction: column;
+
+  mat-form-field {
+    margin-top: space(sm);
+    width: 100%;
+    max-width: 358px;
+  }
+}

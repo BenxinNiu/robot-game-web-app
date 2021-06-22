@@ -1,0 +1,24 @@
+@import "common";
+
+.primary-input {
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #5B636B;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  //mat-input focused color
+  ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: transparent!important;
+  }
+
+  mat-form-field {
+    margin-top: space(sm);
+    width: 100%;
+    max-width: 358px;
+  }
+
+  mat-label {
+    color: white;
+  }
+}

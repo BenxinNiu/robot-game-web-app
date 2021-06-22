@@ -1,0 +1,31 @@
+@import "src/app/style/common";
+
+.navbar {
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+  padding: 0 space(md);
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-brand {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background: url("../../../assets/logo.png") no-repeat;
+  background-size: 100% 100%;
+  margin-left: 0 !important;
+}
+
+.global-nav {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  color: #FFFFFF;
+  &__header {
+    @include center-flex;
+    &__title {
+      color: $primary-white;
+    }
+  }
+
+}

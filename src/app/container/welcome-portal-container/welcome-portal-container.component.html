@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="portal row justify-content-center align-items-center">
+
+    <div class="portal__panel col-xl-8">
+      <h1>Welcome to Sourced Arcade</h1>
+      <a (click)="goToLeaderBoard()" mat-stroked-button>Check out leader board</a>
+      <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="gameCatalogFormGroup" label="Browse game">
+          <sg-app-game-catalog [formGroup]="gameCatalogFormGroup"></sg-app-game-catalog>
+        </mat-step>
+
+        <mat-step [stepControl]="gameSettingFormGroup" label="Setting">
+          <sg-app-game-setting [formGroup]="gameSettingFormGroup"></sg-app-game-setting>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </mat-step>
+
+        <mat-step label="Ready">
+          <p>You are now ready to</p>
+          <button mat-raised-button color="primary">
+            Launch game
+          </button>
+          <div>
+            <button mat-stroked-button color="primary" matStepperPrevious>Back</button>
+            <button mat-button color="primary" (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="board row justify-content-center align-items-center">
+    <div class="col-8">
+      <h1>Welcome to Leader Board</h1>
+      <sg-app-leader-board-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></sg-app-leader-board-table>
+
+      <div class="board__btn-group">
+        <button (click)="goToHome()" mat-raised-button color="primary">Go to Home</button>
+        <button (click)="refresh()" mat-stroked-button color="primary">Refresh</button>
+      </div>
+    </div>
+  </div>
+</div>

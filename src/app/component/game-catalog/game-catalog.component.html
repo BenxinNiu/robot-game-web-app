@@ -1,0 +1,12 @@
+<form class="catalog" *ngIf="formGroup" [formGroup]="formGroup">
+  <mat-radio-group formControlName="game">
+    <mat-list>
+      <mat-list-item *ngFor="let game of gameList">
+        <mat-radio-button class="catalog__option" [value]="game.value"
+                          [disabled]="game.isDisabled">{{game.title}}</mat-radio-button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-radio-group>
+  <button mat-raised-button color="primary" matStepperNext>Next</button>
+</form>

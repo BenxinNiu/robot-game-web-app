@@ -1,0 +1,11 @@
+@import "src/app/style/global";
+
+.catalog {
+  button {
+    margin-top: space(lg);
+  }
+  &__option {
+    display: flex;
+    margin: space(xs) space(sm);
+  }
+}

@@ -1,0 +1,61 @@
+@import "variable";
+
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin hover-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin skytop-font($token, $color: #FFFFFF) {
+  @if($token == 'body-1') {
+    @include get-font(16px, $color, 400)
+  }
+  @if($token == 'body-2') {
+    @include get-font(12px, $color, 400)
+  }
+  @if($token == 'body-3') {
+    @include get-font(12px, $color, 600)
+  }
+  @if($token == 'body-4') {
+    @include get-font(14px, $color, 500)
+  }
+  @if($token == 'body-bold') {
+    @include get-font(16px, $color, 600)
+  }
+  @if($token == 'header-1') {
+    @include get-font(24px, $color, 400);
+  }
+  @if($token == 'title-1') {
+    @include get-font(16px, rgb(55, 118, 116), 700);
+  }
+}
+
+@mixin get-font($size, $color, $weight) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+@function space($token) {
+  @if($token == xs) {
+    @return 6px;
+  }
+  @if($token == sm) {
+    @return 10px;
+  }
+  @if($token == md) {
+    @return 24px;
+  }
+  @if($token == lg) {
+    @return 36px;
+  }
+  @if($token == xl) {
+    @return 50px;
+  }
+}

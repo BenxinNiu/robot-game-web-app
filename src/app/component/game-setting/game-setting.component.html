@@ -1,0 +1,19 @@
+<form class="setting" *ngIf="formGroup" [formGroup]="formGroup">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Play's name</mat-label>
+    <label class="sr-only" for="name"></label>
+    <input matInput id="name" placeholder="Name" type="text" formControlName="name"/>
+    <mat-error *ngIf="isRequiredError('name')">This field is required</mat-error>
+    <mat-error *ngIf="isValidNameError">Please enter at least 3 character and maximum of 16.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <label class="sr-only" for="email"></label>
+    <input matInput id="email" placeholder="Name" type="text" formControlName="email"/>
+    <mat-error *ngIf="isRequiredError('email')">This field is required</mat-error>
+    <mat-error *ngIf="isEmailInvalidError">Please enter a valid email.</mat-error>
+  </mat-form-field>
+
+</form>

@@ -1,0 +1,16 @@
+@import "src/app/style/global";
+
+.board {
+  height: calc(100vh);
+
+  h1 {
+    text-align: center;
+  }
+
+  &__btn-group {
+    margin-top: space(lg);
+    button {
+      margin-right: space(sm);
+    }
+  }
+}
