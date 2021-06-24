@@ -1,7 +1,8 @@
 @import "src/app/style/global";
 
 .board {
-  height: calc(100vh);
+  margin-top: space(xl);
+  height: auto;
 
   h1 {
     text-align: center;
