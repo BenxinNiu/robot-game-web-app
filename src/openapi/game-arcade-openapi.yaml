@@ -1,0 +1,182 @@
+openapi: "3.0.0"
+info:
+  description: Sourced Group Technical Challenge.
+  title: Sourced Group Arcade
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8082
+paths:
+  #### Arcade Game Catalog Controller ####
+  /arcade/games:
+    get:
+      tags:
+        - Game Catalog
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameCatalogResponse'
+          description: ok
+
+  #### Arcade Leader Board Controller ####
+  /arcade/{game}/leaderBoard:
+    get:
+      tags:
+        - Game Leader Board
+      parameters:
+        - in: path
+          name: game
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderBoard'
+          description: ok
+  /arcade/{game}/record:
+    post:
+      tags:
+        - Game Leader Board
+      parameters:
+        - in: path
+          name: game
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameScore'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderBoard'
+          description: ok
+
+  #### Arcade Player Controller ####
+  /arcade/player/{playerId}/profile:
+    get:
+      tags:
+        - Arcade Player
+      parameters:
+        - in: path
+          name: playerId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArcadePlayerProfile'
+          description: ok
+  /arcade/player:
+    post:
+      tags:
+        - Arcade Player
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArcadePlayerProfile'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArcadePlayerProfile'
+          description: ok
+components:
+  schemas:
+    GameCatalogResponse:
+      type: object
+      properties:
+        catalog:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArcadeGame'
+        count:
+          type: number
+        lastUpdated:
+          type: string
+
+    ArcadeGame:
+      type: object
+      required:
+        - title
+        - value
+        - isDisabled
+      properties:
+        title:
+          type: string
+        value:
+          type: string
+        isDisabled:
+          type: boolean
+        lastUpdated:
+          type: string
+
+    LeaderBoard:
+      type: object
+      properties:
+        scoreList:
+          type: array
+          items:
+            $ref: '#/components/schemas/GameScore'
+        limit:
+          type: number
+        updatedAt:
+          type: string
+
+    GameScore:
+      type: object
+      required:
+        - playerId
+        - game
+        - score
+        - createdAt
+      properties:
+        game:
+          type: string
+          enum:
+            - ROBOT
+            - CYBERPUNK
+            - BATTLEFIELD
+        score:
+          type: number
+        createdAt:
+          type: string
+        player:
+          $ref: '#/components/schemas/ArcadePlayerProfile'
+
+    ArcadePlayerProfile:
+      type: object
+      required:
+        - name
+        - email
+      properties:
+        playerId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        # todo: add more player related info
+
+
+
+

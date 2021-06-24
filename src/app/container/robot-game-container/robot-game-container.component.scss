@@ -1,0 +1,17 @@
+@import "src/app/style/global";
+
+.game-container {
+  height: 100vh;
+
+  &__board {
+    @include center-flex;
+  }
+
+  &__control {
+    margin-top: space(md);
+
+    button {
+      margin: space(sm);
+    }
+  }
+}

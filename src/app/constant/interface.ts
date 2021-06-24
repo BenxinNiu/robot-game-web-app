@@ -1,11 +1,15 @@
-export interface ArcadeGame {
-  title: string;
-  value: string;
-  isDisabled: boolean;
+export interface Square {
+  isTank: boolean;
+  isTarget: boolean;
+  direction?: Direction;
+}
+
+export enum Direction {
+  UP, DOWN, RIGHT, LEFT
 }
 
 export interface Player {
-  name: string;
   position: number;
+  name: string;
   score: number;
 }

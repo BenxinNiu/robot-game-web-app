@@ -1,1 +1,22 @@
-<p>robot-game-container works!</p>
+<div class="container">
+  <div class="game-container row justify-content-center align-items-center">
+    <div class="game-container__board col-8 d-flex flex-column ">
+
+      <p> {{(playerProfile$ | async)?.name}}'s Current score: {{currentScore}}</p>
+      <!-- todo: refactor this part to dynamically change board size -->
+      <sg-app-robot-game-board [boardSize]="5" (gameEnded)="endGame()" #board></sg-app-robot-game-board>
+
+      <div class="game-container__control">
+        <button mat-stroked-button color="primary" [disabled]="disableControl" (click)="turnLeft()">Turn Left</button>
+        <button mat-raised-button color="primary" [disabled]="disableControl" (click)="advance()">Advance</button>
+        <button mat-stroked-button color="primary" [disabled]="disableControl" (click)="turnRight()">Turn Right</button>
+      </div>
+
+      <button mat-button color="primary" (click)="resetGame()">Reset Game</button>
+      <a mat-button color="primary" (click)="goToLeaderBoard()">Check leader board</a>
+
+    </div>
+
+
+  </div>
+</div>

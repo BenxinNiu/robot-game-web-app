@@ -1,0 +1,18 @@
+@import "src/app/style/global";
+
+.square {
+  height: 100%;
+  background-color: $primary-blue;
+  position: relative;
+  transition: transform 1s;
+  &__tank {
+    background: url("../../../../assets/tank.png") no-repeat;
+    background-size: 100% 100%;
+  }
+
+  &__star {
+    background: url("../../../../assets/star.png") no-repeat;
+    background-size: 100% 100%;
+  }
+}
+

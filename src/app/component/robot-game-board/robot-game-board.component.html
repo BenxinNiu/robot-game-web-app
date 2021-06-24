@@ -1,0 +1,9 @@
+<ng-container>
+  <div class="board"
+       [style.grid-template-columns]="gridTemplateStyleAttribute"
+       [style.grid-template-rows]="gridTemplateStyleAttribute">
+    <ng-container *ngFor="let square of board;">
+    <sg-app-board-square [square]="square"></sg-app-board-square>
+    </ng-container>
+  </div>
+</ng-container>

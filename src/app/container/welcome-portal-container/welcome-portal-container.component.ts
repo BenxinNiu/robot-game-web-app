@@ -4,6 +4,7 @@ import {validLength} from '../../validator/length.validator';
 import {validEmail} from '../../validator/email.validator';
 import {Router} from '@angular/router';
 import {AppRoute} from '../../constant/app-route';
+import {LeaderBoardFacade} from '../../store/leader-board/facade/leader-board.facade';
 
 @Component({
   selector: 'sg-app-welcome-portal-container',
@@ -15,21 +16,17 @@ export class WelcomePortalContainerComponent implements OnInit {
   gameSettingFormGroup: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private leaderBoardFacade: LeaderBoardFacade) {
   }
 
   ngOnInit(): void {
-    this.gameCatalogFormGroup = this.fb.group({
-      game: ['', Validators.required]
-    }, {updateOn: 'change'});
-
-    this.gameSettingFormGroup = this.fb.group({
-      name: ['', [Validators.required, validLength(3, 16)]],
-      email: ['', [Validators.required, validEmail]],
-    }, {updateOn: 'change'});
+    this.initGameCatalogFormGroup();
+    this.initGameSettingFormGroup();
   }
 
   launchGame(): void {
+    this.updatePlayer();
     switch (this.gameCatalogFormGroup.get('game').value) {
       // todo support more games
       case 'ROBOT':
@@ -38,6 +35,26 @@ export class WelcomePortalContainerComponent implements OnInit {
       default:
         return;
     }
+  }
+
+  private updatePlayer(): void {
+    this.leaderBoardFacade.updatePlayerProfile({
+      name: this.gameSettingFormGroup.get('name').value,
+      email: this.gameSettingFormGroup.get('email').value
+    });
+  }
+
+  initGameCatalogFormGroup(): void {
+    this.gameCatalogFormGroup = this.fb.group({
+      game: ['', Validators.required]
+    }, {updateOn: 'change'});
+  }
+
+  initGameSettingFormGroup(): void {
+    this.gameSettingFormGroup = this.fb.group({
+      name: ['', [Validators.required, validLength(3, 16)]],
+      email: ['', [Validators.required, validEmail]],
+    }, {updateOn: 'change'});
   }
 
   goToLeaderBoard(): void {

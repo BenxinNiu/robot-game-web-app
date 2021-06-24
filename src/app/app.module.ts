@@ -22,11 +22,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatOptionModule} from '@angular/material/core';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
-import { GameSettingComponent } from './component/game-setting/game-setting.component';
-import { LeaderBoardContainerComponent } from './container/leader-board-container/leader-board-container.component';
+import {GameSettingComponent} from './component/game-setting/game-setting.component';
+import {LeaderBoardContainerComponent} from './container/leader-board-container/leader-board-container.component';
 import {MatTableModule} from '@angular/material/table';
-import { LeaderBoardTableComponent } from './component/leader-board-table/leader-board-table.component';
-import { RobotGameContainerComponent } from './container/robot-game-container/robot-game-container.component';
+import {LeaderBoardTableComponent} from './component/leader-board-table/leader-board-table.component';
+import {RobotGameContainerComponent} from './container/robot-game-container/robot-game-container.component';
+import {environment} from '../environments/environment';
+import {GameArcadeApiModule} from '../openapi/codegen/game-arcade/game-arcade-api.module';
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './store/root.reducer';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
+import {LeaderBoardEffect} from './store/leader-board/effect/leader-board.effect';
+import {HttpClientModule} from '@angular/common/http';
+import {RobotGameBoardComponent} from './component/robot-game-board/robot-game-board.component';
+import {BoardSquareComponent} from './component/robot-game-board/board-square/board-square.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +47,23 @@ import { RobotGameContainerComponent } from './container/robot-game-container/ro
     GameSettingComponent,
     LeaderBoardContainerComponent,
     LeaderBoardTableComponent,
-    RobotGameContainerComponent
+    RobotGameContainerComponent,
+    RobotGameBoardComponent,
+    BoardSquareComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    // openapi
+    GameArcadeApiModule.forRoot({rootUrl: environment.gameArcadeRootUrl}),
+    // redux store
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({maxAge: 25}),
+    EffectsModule.forRoot([LeaderBoardEffect]),
+    // Angular Material
     MatStepperModule,
     MatButtonModule,
     MatAutocompleteModule,

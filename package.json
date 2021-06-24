@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prestart": "echo hello"
+    "prestart": "npm run generate:api",
+    "prebuild": "npm run generate:api",
+    "generate:api": "ng-openapi-gen --input src/openapi/game-arcade-openapi.yaml --output ./src/openapi/codegen/game-arcade --module GameArcadeApiModule"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +28,7 @@
     "@ngrx/store": "^11.0.1",
     "@ngrx/store-devtools": "^11.0.1",
     "bootstrap": "^4.5.3",
+    "ng-openapi-gen": "^0.17.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
