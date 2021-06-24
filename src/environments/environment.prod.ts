@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  gameArcadeRootUrl: ''
+  gameArcadeRootUrl: 'https://api.skytopcomputer.com/sourced-group-tech-challenge'
 };

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  gameArcadeRootUrl: 'http://localhost:8080'
+  gameArcadeRootUrl: 'http://localhost:8080/sourced-group-tech-challenge'
 };
 
 /*

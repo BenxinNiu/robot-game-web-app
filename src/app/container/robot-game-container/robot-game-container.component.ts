@@ -8,6 +8,7 @@ import {Observable, Subject, Subscription, timer} from 'rxjs';
 import {ArcadePlayerProfile} from '../../../openapi/codegen/game-arcade/models/arcade-player-profile';
 import {startWith, switchMap, takeWhile} from 'rxjs/operators';
 import {GameScore} from '../../../openapi/codegen/game-arcade/models/game-score';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'sg-app-robot-game-container',
@@ -29,7 +30,8 @@ export class RobotGameContainerComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private snackBar: MatSnackBar,
-              private leaderBoardFacade: LeaderBoardFacade) {
+              private leaderBoardFacade: LeaderBoardFacade,
+              private titleService: Title) {
     this.playerProfile$ = this.leaderBoardFacade.playerProfile;
     this.subscription = new Subscription();
   }
@@ -39,6 +41,7 @@ export class RobotGameContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Playing Robot Game');
     this.initTimer();
     this.timerStart$.next(true);
     this.subscription.add(

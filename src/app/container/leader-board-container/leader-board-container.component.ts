@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {AppRoute} from '../../constant/app-route';
 import {LeaderBoardFacade} from '../../store/leader-board/facade/leader-board.facade';
 import {Observable, Subscription} from 'rxjs';
+import {delay} from 'rxjs/operators';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'sg-app-leader-board-container',
@@ -18,12 +20,14 @@ export class LeaderBoardContainerComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private router: Router,
-              private leaderBoardFacade: LeaderBoardFacade) {
+              private leaderBoardFacade: LeaderBoardFacade,
+              private titleService: Title) {
     this.isLoading$ = this.leaderBoardFacade.isLoading;
     this.subscription = new Subscription();
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Leader board');
     this.initBoard();
   }
 
@@ -35,15 +39,16 @@ export class LeaderBoardContainerComponent implements OnInit, OnDestroy {
     // todo hard code these for now
     this.leaderBoardFacade.loadLeaderBoard('ROBOT', 10);
     this.subscription.add(
-      this.leaderBoardFacade.leaderBoardData.subscribe(board => {
-        board.scoreList.forEach((gameScore, index) => {
-          this.dataSource[index] = {
-            position: index,
-            name: gameScore.player.name,
-            score: gameScore.score
-          };
-        });
-      })
+      this.leaderBoardFacade.leaderBoardData
+        .subscribe(board => {
+          board.scoreList.forEach((gameScore, index) => {
+            this.dataSource[index] = {
+              position: index + 1,
+              name: gameScore.player.name,
+              score: gameScore.score
+            };
+          });
+        })
     );
   }
 
@@ -52,7 +57,7 @@ export class LeaderBoardContainerComponent implements OnInit, OnDestroy {
   }
 
   refresh(): void {
-    console.log('hi');
+    this.leaderBoardFacade.loadLeaderBoard('ROBOT', 10);
   }
 
 }

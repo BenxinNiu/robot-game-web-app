@@ -5,6 +5,7 @@ import {validEmail} from '../../validator/email.validator';
 import {Router} from '@angular/router';
 import {AppRoute} from '../../constant/app-route';
 import {LeaderBoardFacade} from '../../store/leader-board/facade/leader-board.facade';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'sg-app-welcome-portal-container',
@@ -17,10 +18,12 @@ export class WelcomePortalContainerComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private leaderBoardFacade: LeaderBoardFacade) {
+              private leaderBoardFacade: LeaderBoardFacade,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Welcome');
     this.initGameCatalogFormGroup();
     this.initGameSettingFormGroup();
   }
