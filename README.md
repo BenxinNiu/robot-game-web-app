@@ -10,7 +10,7 @@ I estimated a total of 6 hours working on this including the backend work. Howev
 
 1. Typically, I'd have a full unit test coverage (jest) and e2e test, but I didn't have time to do so. 
 2. I implemented the board to support dynamic sizing, like 6, 8, 9 (the board will adjust itself based on an input). But I hard coded to 5 for the time being.
-3. You will find unit test and integration test missing as well. I'm not happy about it either (I'm always a bit crazy over achieving full coverage). But I only got to work on it after work. 
+3. You will find the unit test and integration test of backend missing as well. I'm not happy about it either (I'm always a bit crazy over achieving full coverage). But I only got to work on it after work. 
 
 # Local Setup 
 
