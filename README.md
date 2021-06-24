@@ -22,4 +22,9 @@ I estimated a total of 6 hours working on this including the backend work. Howev
 2. run `ng build --prod` to build for cloud deployment
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# robot-game-web-app
+
+# Screen shots
+![Screen Shot 2021-06-24 at 11 26 40 AM](https://user-images.githubusercontent.com/18537184/123275738-28121000-d4df-11eb-969f-810662ef9fa3.png)
+![Screen Shot 2021-06-24 at 11 26 51 AM](https://user-images.githubusercontent.com/18537184/123275746-2a746a00-d4df-11eb-879d-93c68fe24a0e.png)
+![Screen Shot 2021-06-24 at 11 26 47 AM](https://user-images.githubusercontent.com/18537184/123275751-2c3e2d80-d4df-11eb-8c50-68c0380798e5.png)
+
