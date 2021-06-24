@@ -9,9 +9,7 @@ import {AuthGuardService} from './guard/auth-guard.service';
 const routes: Routes = [
   {path: AppRoute.HOME, component: WelcomePortalContainerComponent},
   {path: AppRoute.LEADER_BOARD, component: LeaderBoardContainerComponent},
-  // {path: AppRoute.ROBOT_GAME, component: RobotGameContainerComponent, canActivate: [AuthGuardService]},
-  {path: AppRoute.ROBOT_GAME, component: RobotGameContainerComponent},
-
+  {path: AppRoute.ROBOT_GAME, component: RobotGameContainerComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: AppRoute.HOME}
 ];
 

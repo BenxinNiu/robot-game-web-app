@@ -99,7 +99,7 @@ export class RobotGameContainerComponent implements OnInit, OnDestroy {
         switchMap(() => timer(1000, 1000)),
       ).subscribe(
         sec => {
-          this.remainingTime = 10 - sec;
+          this.remainingTime = 60 - sec;
           if (this.remainingTime === 0) {
             this.endGame();
           }
