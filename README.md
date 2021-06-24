@@ -2,27 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
-## Development server
+# Access in Cloud: 
+I deployed to my personal AWS account on S3: you can access the app [here](http://game-arcade.s3-website.ca-central-1.amazonaws.com/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# A couple of things.. :)
+I estimated a total of 6 hours working on this including the backend work. However, there were a couple of additional stuff I didn't get to: 
 
-## Code scaffolding
+1. Typically, I'd have a full unit test coverage (jest) and e2e test, but I didn't have time to do so. 
+2. I implemented the board to support dynamic sizing, like 6, 8, 9 (the board will adjust itself based on an input). But I hard coded to 5 for the time being.
+3. You will find unit test and integration test missing as well. I'm not happy about it either (I'm always a bit crazy over achieving full coverage). But I only got to work on it after work. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Local Setup 
 
-## Build
+1. run `npm install` first
+2. run `npm start` (I had a `prestart` script configured, so the openapi will generate the modes and service for communicating to the backend api)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
+# Build for prod
+1. run `npm run generate:api` to generate openapi module
+2. run `ng build --prod` to build for cloud deployment
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # robot-game-web-app
