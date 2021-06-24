@@ -2,7 +2,9 @@
   <div class="game-container row justify-content-center align-items-center">
     <div class="game-container__board col-8 d-flex flex-column ">
 
+      <!-- todo: update this to header for A11y -->
       <p> {{(playerProfile$ | async)?.name}}'s Current score: {{currentScore}}</p>
+      <p>Time remaining: {{remainingTime}} seconds</p>
       <!-- todo: refactor this part to dynamically change board size -->
       <sg-app-robot-game-board [boardSize]="5" (gameEnded)="endGame()" #board></sg-app-robot-game-board>
 
