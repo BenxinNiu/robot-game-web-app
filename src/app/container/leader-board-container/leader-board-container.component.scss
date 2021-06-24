@@ -7,8 +7,13 @@
     text-align: center;
   }
 
+  mat-spinner {
+    margin: 0 auto;
+  }
+
   &__btn-group {
     margin-top: space(lg);
+
     button {
       margin-right: space(sm);
     }

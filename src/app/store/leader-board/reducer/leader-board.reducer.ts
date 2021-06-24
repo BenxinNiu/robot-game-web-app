@@ -12,7 +12,10 @@ export interface LeaderBoardState {
 }
 
 export const LEADER_BOARD_INITIAL_STATE: LeaderBoardState = {
-  leaderBoard: undefined,
+  leaderBoard: {
+    scoreList: [],
+    limit: 0
+  },
   playerProfile: undefined,
   isLoading: false,
   isError: false

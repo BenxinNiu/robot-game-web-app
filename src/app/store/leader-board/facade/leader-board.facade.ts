@@ -35,6 +35,10 @@ export class LeaderBoardFacade {
     return this.store.dispatch(LeaderBoardActions.createNewGameRecord({game, score}));
   }
 
+  public loadLeaderBoard(game: string, limit: number): void {
+    return this.store.dispatch(LeaderBoardActions.requestLeaderBoardData({game, limit}));
+  }
+
   public updatePlayerProfile(profile: ArcadePlayerProfile): void {
     return this.store.dispatch(LeaderBoardActions.updatePlayerProfile({profile}));
   }
